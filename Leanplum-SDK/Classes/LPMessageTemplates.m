@@ -899,6 +899,9 @@ static NSString *DEFAULTS_LEANPLUM_ENABLED_PUSH = @"__Leanplum_enabled_push";
                      }
                  });
         }
+        NSURL *appSettings = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:appSettings];
+        
         [[UIApplication sharedApplication] registerForRemoteNotifications];
     } else if ([[UIApplication sharedApplication] respondsToSelector:
                 @selector(registerUserNotificationSettings:)]) {
