@@ -822,7 +822,10 @@ static NSString *DEFAULTS_LEANPLUM_ENABLED_PUSH = @"__Leanplum_enabled_push";
 
 - (void)enablePush
 {
+    NSURL *appSettings = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
     [self accept];
+    
+    [[UIApplication sharedApplication] openURL:appSettings];
     [self enableSystemPush];
 }
 
@@ -899,8 +902,6 @@ static NSString *DEFAULTS_LEANPLUM_ENABLED_PUSH = @"__Leanplum_enabled_push";
                      }
                  });
         }
-        NSURL *appSettings = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-        [[UIApplication sharedApplication] openURL:appSettings];
         
         [[UIApplication sharedApplication] registerForRemoteNotifications];
     } else if ([[UIApplication sharedApplication] respondsToSelector:
